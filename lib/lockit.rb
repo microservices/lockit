@@ -18,6 +18,8 @@ module LockIt
       self
     end
 
+    # If the directory is locked already, return false
+    # Otherwise, lock the directory
     def try_lock args = {}
       return false if locked?
       lock args
