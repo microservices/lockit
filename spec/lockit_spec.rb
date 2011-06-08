@@ -1,16 +1,17 @@
 require File.join(File.dirname(__FILE__), "..", "lib", "lockit.rb")
 require 'tmpdir'
+require 'rspec'
 
 describe LockIt::Dir do
   
-  context "locking and unlocking" do
+  describe "locking and unlocking" do
     
     it "is unlocked by default" do
       dir = Dir.mktmpdir
       lockit_dir = LockIt::Dir.new(dir)
       lockit_dir.locked?.should eql(false)
     end
-    
+
     it "can be locked and unlocked" do
       dir = Dir.mktmpdir
       lockit_dir = LockIt::Dir.new(dir)
@@ -21,7 +22,8 @@ describe LockIt::Dir do
     end
     
   end
-  context "try_lock" do
+  
+  describe "#try_lock" do
         
     it "tries the lock & returns false if it is already locked" do
       lockit_dir = LockIt::Dir.new(Dir.mktmpdir)

@@ -8,6 +8,9 @@ rescue Bundler::BundlerError => e
   exit e.status_code
 end
 require 'rake'
+require 'rspec'
+require 'rspec/core/rake_task'
+
 
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
@@ -32,14 +35,15 @@ Rake::TestTask.new(:test) do |test|
   test.verbose = true
 end
 
-require 'rcov/rcovtask'
-Rcov::RcovTask.new do |test|
-  test.libs << 'test'
-  test.pattern = 'test/**/test_*.rb'
-  test.verbose = true
+
+desc "Generate code coverage"
+RSpec::Core::RakeTask.new(:rcov) do |t|
+  t.pattern = "./spec/**/*_spec.rb" # don't need this, it's default.
+  t.rcov = true
+  t.rcov_opts = ['--exclude', 'spec', '--exclude', 'gems']
 end
 
-task :default => :test
+task :default => :spec
 
 require 'rake/rdoctask'
 Rake::RDocTask.new do |rdoc|
