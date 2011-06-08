@@ -3,6 +3,8 @@ module LockIt
   FILENAME='lock.txt'
 
   module Mixin
+    
+    # Lock the directory
     def lock args = {}
       return false if locked?
       write_lock args
