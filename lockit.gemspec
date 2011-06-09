@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.email       = %q{chris@cbeer.info}
   s.homepage    = "https://github.com/microservices/lockit"
   s.summary     = %q{A ruby implementation of LockIt: A Simple File-based Convention for Resource Locking}
-  s.description = %q{TODO: Write a gem description}
+  s.description = %q{A ruby implementation of LockIt: A Simple File-based Convention for Resource Locking}
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
