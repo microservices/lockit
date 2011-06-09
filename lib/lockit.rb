@@ -11,6 +11,7 @@ module LockIt
       self
     end
 
+    # @param DateTime :release When will this lock likely be released? 
     def revise_lock args
       return false unless locked?
       # xxx is it my lock to revise?
@@ -51,6 +52,8 @@ module LockIt
     end
 
     private
+    
+    # return the path to the closest lock file in this directory
     def closest_lock_file
       d = []
       last = nil
@@ -66,6 +69,7 @@ module LockIt
     def lock_file
       File.join(self.path, LockIt::FILENAME)
     end
+    
     def write_lock args
       File.open(lock_file, 'w') do |f|
         f.write(lock_content(args))
