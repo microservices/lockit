@@ -1,6 +1,5 @@
-require File.join(File.dirname(__FILE__), "..", "lib", "lockit.rb")
+require 'spec_helper'
 require 'tmpdir'
-require 'rspec'
 
 describe LockIt::Dir do
   
