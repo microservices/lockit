@@ -1,4 +1,6 @@
 require 'fileutils'
+require 'date'
+
 module LockIt
   FILENAME='lock.txt'
 
